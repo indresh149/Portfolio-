@@ -1,0 +1,455 @@
+.home-container {
+  position: relative;
+  min-height: 100vh;
+  padding: 50px 40px;
+  margin-top: 7px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.home-container .logo {
+  position: inherit;
+  margin-top: -50px;
+  height: 520px;
+  width: 520px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  user-select: none;
+}
+
+.home-container .logo .hover-show {
+  position: absolute;
+  height: 300px;
+  width: 300px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 5;
+  cursor: pointer;
+}
+
+.home-container .logo .hover-show.active {
+  animation: showspin 8s linear 1s infinite;
+}
+
+@keyframes showspin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.home-container .logo .circle {
+  position: absolute;
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  background-color: rgb(4, 4, 44);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.2s ease;
+  opacity: 0;
+}
+
+.home-container .logo .hover-show.active .circle {
+  opacity: 1;
+}
+
+.home-container .logo .hover-show.active .circle:nth-child(1) {
+  background: url(https://jaxenter.com/wp-content/uploads/2020/05/shutterstock_499005652.jpg);
+  background-size: cover;
+  background-position: center;
+  position: absolute;
+  transform: translateY(-210%);
+}
+.home-container .logo .hover-show.active .circle:nth-child(2) {
+  position: absolute;
+  transform: translateX(150%) translateY(-150%);
+  background: url(https://webartdevelopers.com/blog/wp-content/uploads/2020/10/firebase-logo.png);
+  background-size: cover;
+  background-position: center;
+}
+.home-container .logo .hover-show.active .circle:nth-child(3) {
+  position: absolute;
+  transform: translateX(210%);
+  background: url(../props/java.jpg);
+  background-size: cover;
+  background-position: center;
+}
+.home-container .logo .hover-show.active .circle:nth-child(4) {
+  position: absolute;
+  transform: translateX(150%) translateY(150%);
+  background: url(data:image/png;base64,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);
+  background-size: cover;
+  background-position: center;
+}
+.home-container .logo .hover-show.active .circle:nth-child(5) {
+  position: absolute;
+  transform: translateY(210%);
+  background: url(data:image/jpeg;base64,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);
+  background-size: cover;
+  background-position: center;
+}
+.home-container .logo .hover-show.active .circle:nth-child(6) {
+  position: absolute;
+  transform: translateX(-150%) translateY(150%);
+  background: url(https://bs-uploads.toptal.io/blackfish-uploads/components/seo/content/og_image_file/og_image/777562/android-apps-mvvm-with-clean-architecture-ce042b0da370a289e0ee95fd997f25c3.png);
+  background-size: cover;
+  background-position: center;
+}
+.home-container .logo .hover-show.active .circle:nth-child(7) {
+  position: absolute;
+  transform: translateX(-210%);
+  background: url(../props/c-plus-plus.png);
+  background-size: cover;
+  background-position: center;
+}
+.home-container .logo .hover-show.active .circle:nth-child(8) {
+  position: absolute;
+  transform: translateX(-150%) translateY(-150%);
+  background: url(../props/kotlin.png);
+  background-size: cover;
+  background-position: center;
+}
+
+.home-container img {
+  position: absolute;
+  height: 300px;
+  width: 300px;
+  border-radius: 50%;
+  border: 3px solid rgb(108, 161, 197);
+  transform: translate(-200px);
+  opacity: 0;
+  animation: fade-in 1s ease 1 0.5s forwards;
+}
+
+@keyframes fade-in {
+  to {
+    transform: translate(0);
+    opacity: 1;
+  }
+}
+
+.home-container h2 {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 60%;
+  margin-top: 50px;
+}
+
+.home-container h2 span {
+  font-size: 25px;
+  opacity: 0.8;
+  padding-bottom: 5px;
+  border-bottom: 2px solid var(--color-pri);
+  font-family: "Open Sans Condensed", sans-serif;
+}
+
+.home-container h2 p {
+  font-size: 20px;
+  opacity: 1;
+  font-weight: 100;
+  margin-top: 1px;
+  font-family: "Open Sans", sans-serif;
+}
+
+.scroll-down {
+  transform: rotate(90deg);
+  position: absolute;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.scroll-down hr {
+  background-color: blue;
+  width: 20px;
+}
+
+.scroll-down h5 {
+  font-size: 18px;
+  text-transform: capitalize;
+  font-weight: 100;
+}
+
+.scroll-down .scroll {
+  transform: rotate(-90deg);
+  font-size: 20px;
+}
+
+@media (max-width: 820px) {
+  .home-container {
+    position: relative;
+    min-height: 100vh;
+    padding: 150px 40px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .home-container .logo {
+    position: inherit;
+    height: 220px;
+    width: 220px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    user-select: none;
+  }
+
+  .home-container .logo .hover-show {
+    position: absolute;
+    height: 220px;
+    width: 220px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 5;
+    cursor: pointer;
+  }
+
+  .home-container .logo .circle {
+    position: absolute;
+    height: 90px;
+    width: 90px;
+    border-radius: 50%;
+    background-color: rgb(4, 4, 44);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.2s ease;
+    opacity: 0;
+  }
+
+  .home-container img {
+    position: absolute;
+    height: 250px;
+    width: 250px;
+    border-radius: 50%;
+    border: 3px solid rgb(108, 161, 197);
+    transform: translate(-200px);
+    opacity: 0;
+    animation: fade-in 1s ease 1 0.5s forwards;
+  }
+
+  .home-container h2 {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 100%;
+    margin-top: 200px;
+  }
+
+  .home-container h2 span {
+    font-size: 25px;
+    opacity: 0.8;
+    padding-bottom: 5px;
+    border-bottom: 2px solid var(--color-pri);
+    font-family: "Open Sans Condensed", sans-serif;
+  }
+
+  .home-container h2 p {
+    font-size: 25px;
+    font-weight: 100;
+    font-family: "Open Sans", sans-serif;
+  }
+}
+
+@media (max-width: 500px) {
+  .home-container {
+    position: relative;
+    min-height: 100vh;
+    padding: 150px 30px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .home-container .logo {
+    position: inherit;
+    height: 220px;
+    width: 220px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    user-select: none;
+  }
+
+  .home-container .logo .hover-show {
+    position: absolute;
+    height: 220px;
+    width: 220px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 5;
+    cursor: pointer;
+  }
+
+  .home-container .logo .circle {
+    position: absolute;
+    height: 75px;
+    width: 75px;
+    border-radius: 50%;
+    background-color: rgb(4, 4, 44);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.2s ease;
+    opacity: 0;
+  }
+
+  .home-container img {
+    position: absolute;
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    border: 3px solid rgb(108, 161, 197);
+    transform: translate(-200px);
+    opacity: 0;
+    animation: fade-in 1s ease 1 0.5s forwards;
+  }
+
+  .home-container h2 {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 100%;
+    margin-top: 200px;
+  }
+
+  .home-container h2 span {
+    font-size: 22px;
+    opacity: 0.8;
+    padding-bottom: 5px;
+    border-bottom: 2px solid var(--color-pri);
+    font-family: "Open Sans Condensed", sans-serif;
+  }
+
+  .home-container h2 p {
+    font-size: 18px;
+    font-weight: 100;
+    font-family: "Open Sans", sans-serif;
+  }
+  .scroll-down {
+    transform: rotate(90deg);
+    position: absolute;
+    right: -70px;
+    top: 45%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+  }
+}
+
+@media (max-width: 400px) {
+  .home-container {
+    position: relative;
+    min-height: 100vh;
+    padding: 150px 10px 0;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .home-container .logo {
+    position: inherit;
+    height: 180px;
+    width: 180px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    user-select: none;
+  }
+
+  .home-container .logo .hover-show {
+    position: absolute;
+    height: 180px;
+    width: 180px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 5;
+    cursor: pointer;
+  }
+
+  .home-container .logo .circle {
+    position: absolute;
+    height: 65px;
+    width: 65px;
+    border-radius: 50%;
+    background-color: rgb(4, 4, 44);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.2s ease;
+    opacity: 0;
+  }
+
+  .home-container img {
+    position: absolute;
+    height: 185px;
+    width: 185px;
+    border-radius: 50%;
+    border: 3px solid rgb(108, 161, 197);
+    transform: translate(-200px);
+    opacity: 0;
+    animation: fade-in 1s ease 1 0.5s forwards;
+  }
+
+  .home-container h2 {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 100%;
+    margin-top: 250px;
+  }
+
+  .home-container h2 span {
+    font-size: 22px;
+    opacity: 0.8;
+    padding-bottom: 5px;
+    border-bottom: 2px solid var(--color-pri);
+    font-family: "Open Sans Condensed", sans-serif;
+  }
+
+  .home-container h2 p {
+    font-size: 18px;
+    font-weight: 100;
+    font-family: "Open Sans", sans-serif;
+  }
+}
